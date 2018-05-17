@@ -27,7 +27,7 @@ shva <- read.csv("C:/Users/Irina/Downloads/duryagin_ReductionRussian.txt", sep="
 ### 1.1 Scatterplot `f1` and `f2` using `ggplot()`. 
 Design it to look like the [following](https://raw.githubusercontent.com/agricolamz/2018-MAG_R_course/master/img/duryagin1.png).
 ```{r 1.1}
-ggplot(data = shva, aes(y = f1, x = f2, color=vowel)) + geom_point(size=2)+
+ggplot(data = shva, aes(y = f1, x = f2, color=vowel)) +
   geom_point() + ggtitle("f1 and f2 of the reduced and stressed vowels") + 
   scale_y_reverse() + scale_x_reverse() +  labs(caption = "Data from Duryagin 2018") + theme(legend.position="none")
 ```
