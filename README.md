@@ -2,5 +2,5 @@
 ### Project name :
 Speech emotion analysis: embarrassment
 ### Project participants: 
-* Borisenko Natalia
-* Nikishina Irina
+* Borisenko Natalia (LT)
+* Nikishina Irina (CL)
