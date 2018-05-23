@@ -21,12 +21,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction  
 
-Describe the phenomenon.
+### Describe the phenomenon.
 
-Provide information about the language (only for minor languages).
+### Provide information about the language (only for minor languages).
+For the current task we use audios in Russian and French. These languages are among the six languages that are used in UN meetings.
 
-Mention some previous research (optional).
-
+### Mention some previous research (optional).
+Embarrasment features in speech were previousely explored two years ago
 
 ## Research hypothesis  
 
