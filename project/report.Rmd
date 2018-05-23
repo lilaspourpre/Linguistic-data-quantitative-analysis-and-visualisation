@@ -1,7 +1,7 @@
 ---
-title: "Research project paper template"
-date: 19.01.2018
-author: Olga Lyashevskaya
+title: "Speech emotion analysis: embarrasment features in Russian and French"
+date: 10.06.2018
+authors: Natalia Borisenko and Irina Nikishina
 output:
   html_document:
     toc: true
@@ -15,9 +15,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ### Materials  
-[Link to the data set](https://github.com/...) (csv file)  
-[Links to additional scripts, with comments](https://github.com/...) (optional)  
-[Links to other supplementary materials (questionnaires, etc.)](https://github.com/...) (optional)  
+[Link to the data set](https://github.com/lilaspourpre/Linguistic-data-quantitative-analysis-and-visualisation/blob/master/project/dataset_embarr.csv) (csv file)  
+[Link to audio](https://github.com/lilaspourpre/Linguistic-data-quantitative-analysis-and-visualisation/tree/master/project/audio)
+[Link to questionnaire](https://docs.google.com/forms/d/e/1FAIpQLSf6uuyYNl8ZlWfX3knrF-04q35faGCwP83PXebmEK59VTFQCA/viewform)  
 
 ## Introduction  
 
