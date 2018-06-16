@@ -66,14 +66,14 @@ All in all, as our null hypothesis for multi-factor analysis we assume that none
 
 ## Data  
 
-Our dataset comprises 216 responces of 
+Our dataset comprises 216 responces from questionnaire (described below). 
 
 ```{r dataset}
-df <- read.csv("example.csv")  
-summary(df)
-str(df)
+embarr <- read.csv("dataset_embarr.csv")
+summary(embarr)
+str(embarr)
 ```
-* Our dependent variable is MERV -- mean embarrassement recognition value: average score for all audios 
+* Our dependent variable is MERV -- mean embarrassement recognition value: average score for all/French/Russian audios 
 * Predictor variables, their types, range/levels  
 
 * Number of observations  
