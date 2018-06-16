@@ -160,6 +160,46 @@ library(tidyverse)
 ## Analysis: descriptive statistics
 In this section you can put tables and plots that show data distribution for individual variables and distribution for pairs of variables. Histograms, density plots, boxplots (or violin plots), mosaic plots are recommended. You can also provide some basic statistical analysis, such as correlation, statistical significance, t-test and other simple tests. If you calculate a chi-square statistic, do not forget to estimate the effect size.
 
+
+First of all, we counted all posible statistical info:
+| Age | NumOfRespondents |
+| --- | --- |
+| 18-25| 57 |
+| 26-30 | 52 |
+| 31-35 | 52 |
+| 36-40 | 55 |
+
+| Gender | NumOfRespondents |
+| --- | --- |
+| F | 107 |
+| M | 109 |
+
+| Education | NumOfRespondents |
+| --- | --- |
+| Higher | 112 |
+| Secondary | 104 |
+
+| English | NumOfRespondents |
+| --- | --- |
+| 0 | 103 |
+| 1 | 113 |
+
+| French | NumOfRespondents |
+| --- | --- |
+| 0 | 109 |
+| 1 | 107 |
+
+Moreover, we also counted mean, max and min values for Russian audios, French audios and both in common: 
+
+| Language of audio | Mean | Max | Min |
+| --- | --- | --- | --- | --- | 
+| French | 2.314815 | 5 | 0 | 
+| Russian | 1.910185 5 | 0 | 
+| Both | 2.1125 | 5 | 0 | 
+
+We can see that difference of mean values for Russian and French are slightly different. That is why we use t-test in order to discover whether this difference is staticstically significant.
+
+
 ## Multi-factor analysis  
 At least two different methods have to be used. Please provide the output models summaries and graphs. Please evaluate your models (show and interpret relevant indicators such as classification accuracy, goodness of fit, classification power, inertia, variable significance, variable importance, etc.).   
 It is recommended to report, when needed, how did you fit the model, did you find any signs of overfitting, why do you believe that certain model is an optimal one, etc.
