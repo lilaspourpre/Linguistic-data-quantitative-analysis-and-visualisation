@@ -31,24 +31,47 @@ Embarrasment features in speech were previousely explored two years ago
 
 ## Research hypothesis  
 
-...
-Discuss possible relevant factors.  
-Formulate null hypothesis.
+As it has been already said we assume that mean embarrassment recognition value (hereinafter MERV) might depend on extra linguistic factors: gender, age, education and foreign language aquisition. As our null hypothesis we assume that none of the above mentioned factor do not affect MERV results.
 
+Thus, in the current research we formulate the following null hypothesis:
+1) MERV doesn't depend on gender:
+*  MERV doesn't depend on gender for Russian audios
+*  MERV doesn't depend on gender for French audios
+*  MERV doesn't depend on gender for all audios
+
+2) MERV doesn't depend on age
+* MERV doesn't depend on age for Russian audios
+* MERV doesn't depend on age for French audios
+* MERV doesn't depend on age for all audios
+
+3) MERV doesn't depend on education level
+* MERV doesn't depend on education level for Russian audios
+* MERV doesn't depend on education level for French audios
+* MERV doesn't depend on education level for all audios
+
+4) MERV doesn't depend on the English language aquisition
+* MERV doesn't depend on the English language aquisition for Russian audios
+* MERV doesn't depend on the English language aquisition for French audios
+* MERV doesn't depend on the English language aquisition for all audios
+
+5) MERV doesn't depend on the Frenchh language aquisition
+* MERV doesn't depend on the Frenchh language aquisition for Russian audios
+* MERV doesn't depend on the Frenchh language aquisition for French audios
+* MERV doesn't depend on the Frenchh language aquisition for all audios
 
 ## Data  
 
-* Dependent variable, its type  
-
-* Predictor variables, their types, range/levels  
-
-* Number of observations  
+Our dataset comprises 216 responces of 
 
 ```{r dataset}
 df <- read.csv("example.csv")  
 summary(df)
 str(df)
 ```
+* Our dependent variable is MERV -- mean embarrassement recognition value: average score for all audios 
+* Predictor variables, their types, range/levels  
+
+* Number of observations  
 
 ### Data collection and annotation   
 Mention the source of your data, details of data collection. Justify the amount of data under study. In addition, you can discuss certain difficulties, peculiarities and shortcomings in data collection and annotation.  
