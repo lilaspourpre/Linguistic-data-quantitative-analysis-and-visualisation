@@ -1,5 +1,5 @@
 ---
-title: "Speech emotion analysis: embarrasment features in Russian and French"
+title: "Speech emotion analysis: embarrasment detection for French and Russian"
 date: 10.06.2018
 authors: Natalia Borisenko and Irina Nikishina
 output:
