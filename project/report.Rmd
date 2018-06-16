@@ -31,7 +31,8 @@ Embarrasment features in speech were previousely explored two years ago
 
 ## Research hypothesis  
 
-As it has been already said we assume that mean embarrassment recognition value (hereinafter MERV) might depend on extra linguistic factors: gender, age, education and foreign language aquisition. As our null hypothesis we assume that none of the above mentioned factor do not affect MERV results.
+As it has been already said we assume that mean embarrassment recognition value (hereinafter MERV) might depend on extra linguistic factors: gender, age, education and foreign language aquisition. Moreover, it is also important to discover whether embarressment in French is recognized "better" than embarressment in Russian. In other words, whether language of audio is important for embarresment detection. 
+
 
 Thus, in the current research we formulate the following null hypothesis:
 1) MERV doesn't depend on gender:
@@ -59,6 +60,10 @@ Thus, in the current research we formulate the following null hypothesis:
 * MERV doesn't depend on the Frenchh language aquisition for French audios
 * MERV doesn't depend on the Frenchh language aquisition for all audios
 
+All in all, as our null hypothesis for multi-factor analysis we assume that none of the above mentioned factor do not affect MERV results
+
+6) Language in audio is not important for embarresment detection.
+
 ## Data  
 
 Our dataset comprises 216 responces of 
@@ -74,6 +79,20 @@ str(df)
 * Number of observations  
 
 ### Data collection and annotation   
+
+From our previous research we took the following 5 phrases with possible embarrassment features:
+* 
+* 
+* 
+* 
+* 
+
+Each of those phrases were voiced and recorded by 2 native Russian speakers (M and F, 22 y.o.). 
+However, for the current research we decided to 
+and asked 2 native French speakers (M and F, 22 y.o.) to record those phrases, translated into French. 
+
+We ran a questionnaire with 5 questions of "hard data" type (age, gender, education, foreign languages) and 20 questions about embarrassment measurement in audios. The respondents we suggested to listen to each audio and to score embarrassment expression level in each audio from 0 to 5.
+
 Mention the source of your data, details of data collection. Justify the amount of data under study. In addition, you can discuss certain difficulties, peculiarities and shortcomings in data collection and annotation.  
 
 ### Data considerations
