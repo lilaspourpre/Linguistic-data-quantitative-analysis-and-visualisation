@@ -89,14 +89,15 @@ From our previous research we took the following 5 phrases with possible embarra
 * _Спасибо, без вашей помощи я бы не справился(ась)._
 
 Each of those phrases were voiced and recorded by 2 native Russian speakers (M and F, 22 y.o.). 
-However, for the current research we decided to 
-and asked 2 native French speakers (M and F, 22 y.o.) to record those phrases, translated into French. 
+However, in the current research we compare emberrassment detection for Russian and French, so we translated the above mentioned sentences (with a C1-level certificated interpreter and further native speaker revision) into French. Then we asked 2 native French speakers (M and F, 22 y.o.) to record the phrases. Source and target sentences are provided below:
 
-* Est-ce que ce gros bouquet de fleurs est vraiment pour moi?
-* J'ai écrit cette thèse en 10 jours
-* Arrêtez, vous n'auriez pas dû faire ça, je n'en vaux pas la peine
-* Allez, ça va, c'était pas du tout difficile pour moi
-* Merci beaucoup pour votre aide, je n'aurais jamais réussi seul
+| Russian | French |
+| --- | --- |
+|Неужели этот огромный букет мне? | Est-ce que ce gros bouquet de fleurs est vraiment pour moi?|
+|Я написал(а) эту диссертацию за 10 дней. | J'ai écrit cette thèse en 10 jours|
+|Ну что вы, не надо было, я того не стою.| Arrêtez, vous n'auriez pas dû faire ça, je n'en vaux pas la peine|
+|рестаньте, мне было совсем не трудно.| Allez, ça va, c'était pas du tout difficile pour moi |
+|Спасибо, без вашей помощи я бы не справился(ась)| Merci beaucoup pour votre aide, je n'aurais jamais réussi seul|
 
 We ran a questionnaire with 5 questions of "hard data" type (age, gender, education, foreign languages) and 20 questions about embarrassment measurement in audios. The respondents we suggested to listen to each audio and to score embarrassment expression level in each audio from 0 to 5.
 
