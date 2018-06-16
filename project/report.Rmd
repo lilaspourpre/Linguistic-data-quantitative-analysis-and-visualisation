@@ -192,13 +192,34 @@ First of all, we counted all posible statistical info:
 Moreover, we also counted mean, max and min values for Russian audios, French audios and both in common: 
 
 | Language of audio | Mean | Max | Min |
-| --- | --- | --- | --- | --- | 
+| --- | --- | --- | --- | 
 | French | 2.314815 | 5 | 0 | 
 | Russian | 1.910185 5 | 0 | 
 | Both | 2.1125 | 5 | 0 | 
 
 We can see that difference of mean values for Russian and French are slightly different. That is why we use t-test in order to discover whether this difference is staticstically significant.
 
+```{r RuAndFr}
+embarr.FrRu <- c(embarr$A1.1,embarr$A1.2, embarr$B1.1, embarr$B1.2, embarr$C1.1, embarr$C1.2, embarr$D1.1, embarr$D1.2, embarr$E1.1, embarr$E1.2, embarr$A2.1,embarr$A2.2, embarr$B2.1, embarr$B2.2, embarr$C2.1, embarr$C2.2, embarr$D2.1, embarr$D2.2, embarr$E2.1, embarr$E2.2)
+embarr.lang <- c(rep("ru", times=2160),rep("fr", times=2160))
+embarr.FrRu.Sums <- data.frame(embarr.FrRu, embarr.lang)
+```
+
+Here we create a new data.frame with two columns: mean value and language/ Then we apply t-test.
+
+```{r RuAndFr}
+embarr.FrRu.Sums %>% 
+  ggplot(aes(embarr.FrRu, fill = embarr.lang, color = embarr.lang))+
+  geom_density(alpha = 0.9)+
+  geom_rug()+
+  theme_bw()
+```
+
+```{r RuAndFr}
+t.test(embarr.FrRu.Sums[embarr.FrRu.Sums$embarr.lang == "ru", ]$embarr.FrRu,
+       embarr.FrRu.Sums[embarr.FrRu.Sums$embarr.lang == "fr", ]$embarr.FrRu)
+```
+We see that p-value is < 0.05, then we may assume that this result is statistically significant (differnece between mean scores is statistically significant)
 
 ## Multi-factor analysis  
 At least two different methods have to be used. Please provide the output models summaries and graphs. Please evaluate your models (show and interpret relevant indicators such as classification accuracy, goodness of fit, classification power, inertia, variable significance, variable importance, etc.).   
