@@ -99,9 +99,19 @@ However, in the current research we compare emberrassment detection for Russian 
 |рестаньте, мне было совсем не трудно.| Allez, ça va, c'était pas du tout difficile pour moi |
 |Спасибо, без вашей помощи я бы не справился(ась)| Merci beaucoup pour votre aide, je n'aurais jamais réussi seul|
 
-We ran a questionnaire with 5 questions of "hard data" type (age, gender, education, foreign languages) and 20 questions about embarrassment measurement in audios. The respondents we suggested to listen to each audio and to score embarrassment expression level in each audio from 0 to 5.
+After that, we ran a questionnaire with 5 questions of "hard data" type (age, gender, education, foreign languages) and 20 questions about embarrassment measurement in audios. The respondents we suggested to listen to each audio (with Russian and French records) and to score embarrassment expression level in each audio from 0 to 5.
 
-Mention the source of your data, details of data collection. Justify the amount of data under study. In addition, you can discuss certain difficulties, peculiarities and shortcomings in data collection and annotation.  
+We also discovered the appropriate number of respondents considering the amount of parameters (predictor variables) and with the usage of power test. We use the following code:
+
+```{power test}
+power.anova.test(groups = 64, between.var = 1, within.var = 3,
+                 power = .95)
+```
+Number of groups = 2(levels of gender) * 4 (levels of age) * 2 (levels of education) * 2 (levels of English aquisition) * 2 (levels of french aquisition) = 2 * 4 * 2 * 2 * 2 = 2^6 = 64. We suppose betweeb.var=1 and within.var as signifiant. Thus, our minimum number of respondents should not be less than 3 * 64 = 192. By the start of our research, the questionnaire included 216 responces. 
+
+However, before converting our results to .csvfile we slightly change questionnaire format to machine-readable and interpretable format. For instance, question about language aquisition has the form of multiple choice (English, French, German and other foreign languages), while for analysis we selected binary type for English and French columns/parameters/features. Moreover, we divided respondents into 5 different gropups by age.
+
+It is rather obvious that our dataset is not as brilliant as it might seem at first glance. Binary type of language aquisition does not represent the actual language knowledge. The same problem might appear with age. 
 
 ### Data considerations
 Discuss research design (if applicable), independence, autocorrelation, nestedness of data, possible biases, etc.
