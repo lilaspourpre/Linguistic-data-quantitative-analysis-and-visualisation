@@ -214,8 +214,8 @@ library(tidyverse)
 embarr.FrRu.Sums %>% 
   ggplot(aes(embarr.FrRu, fill = language, color = language))+
   geom_density(alpha = 0.9)+
-  xlab("mean") +
   geom_rug()+
+  labs(title="Mean values for Russian and French audios", x="mean") +
   theme_bw()
 ```
 ![alt text](https://github.com/lilaspourpre/Linguistic-data-quantitative-analysis-and-visualisation/blob/master/project/img/commonMean.PNG)
