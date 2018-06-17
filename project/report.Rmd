@@ -306,6 +306,15 @@ summary(fit3)
 At least two different methods have to be used. Please provide the output models summaries and graphs. Please evaluate your models (show and interpret relevant indicators such as classification accuracy, goodness of fit, classification power, inertia, variable significance, variable importance, etc.).   
 It is recommended to report, when needed, how did you fit the model, did you find any signs of overfitting, why do you believe that certain model is an optimal one, etc.
 
+### Linear Regression
+As we have the correlation between meanFrench and meanRussian we can build linear regression model.
+
+```
+```
+To add, the t-test shows that Age and English are significant we can build the following model.
+
+### PCA
+
 ## Linguistic interpretation of the quantitative results  
 
 ## Discussion on data distribution and quantitative methods in use   
