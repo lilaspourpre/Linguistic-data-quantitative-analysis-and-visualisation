@@ -71,7 +71,15 @@ embarr <- read.csv("dataset_embarr.csv")
 summary(embarr)
 str(embarr)
 ```
-* Our dependent variable is MERV -- mean embarrassement recognition value: average score for all/French/Russian audios. Its type is numerical (ratio) and belongs to the interval from 0 to 5.
+* Our dependent variable is MERV -- mean embarrassement recognition value: average score for all/French/Russian audios. Its type is numerical (ratio) and belongs to the interval from 0 to 5.For each audio we recieved the following maximum, minimum and average values:
+
+
+![alt text](https://github.com/lilaspourpre/Linguistic-data-quantitative-analysis-and-visualisation/blob/master/project/img/audio_French.PNG)
+
+
+![alt text](https://github.com/lilaspourpre/Linguistic-data-quantitative-analysis-and-visualisation/blob/master/project/img/audio_Russian.PNG)
+
+
 Considering the fact that mean values for Russian, French and overall mean for each respondent are not included in the dataset we count it using the following code:
 
 ```{r dataset}
