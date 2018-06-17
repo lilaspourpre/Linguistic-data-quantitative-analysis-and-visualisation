@@ -245,13 +245,26 @@ cor = 0.253794 that demonstrates that the results have weak positive correlation
 
 We also ran a set of t-tests for discovering dependency of Russian, French and Russian+French mean embarrassement recognition values on each parameter. The results might be seen in the table below:
 
-| Parameters | t-value (RU) | p-value (RU) | t-value (FR) | p-value (FR) | t-value (FR+RU) | p-value (FR+RU) | Statistically significant|
-| --- | --- | --- | --- | --- | --- | --- | --- | 
-| Gender | 0.220 | 0.982 | -0.498 | 0.619 | -0.317 | 0.752 || 
-| Education | -1.517 | 0.130 | -0.964 | 0.336 | -1.559 | 0.12 || 
-| English | -0.542 | 0.589 | -2.87 | 0.004 | -2.230 | 0.027 | * |
-| French | -0.823 | 0.411| 1.470 | 0.140 | 1.470 | 0.14 ||
+| Parameters | t-value (RU) | p-value (RU)  | Statistically significant|
+| --- | --- | --- | --- | 
+| Gender | 0.220 | 0.982 || 
+| Education | -1.517 | 0.130 || 
+| English | -0.542 | 0.589 ||
+| French | -0.823 | 0.411 ||
 
+| Parameters | t-value (FR) | p-value (FR)  | Statistically significant|
+| --- | --- | --- | --- | 
+| Gender | -0.498 | 0.619  || 
+| Education | -0.964 | 0.336 || 
+| English | -2.87 | 0.004 | * |
+| French |  1.470 | 0.140 ||
+
+| Parameters | t-value (FR+RU) | p-value (FR+RU) | Statistically significant|
+| --- | --- | --- | --- | 
+| Gender | -0.317 | 0.752 || 
+| Education | -1.559 | 0.12 || 
+| English | -2.230 | 0.027 | * |
+| French  | 1.470 | 0.14 ||
 
 ## Multi-factor analysis  
 At least two different methods have to be used. Please provide the output models summaries and graphs. Please evaluate your models (show and interpret relevant indicators such as classification accuracy, goodness of fit, classification power, inertia, variable significance, variable importance, etc.).   
