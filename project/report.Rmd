@@ -22,10 +22,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Introduction  
 
 ### Describe the phenomenon.
-Embarrassment as other emotions mainly is the object of studies of psychology. For instance, (Goffman, 1967) describes embarrassment as expression of opinion about our actions that do not suit the satiation. (Borg et al., 1988) understand embarrassment as a type of shame, (Edelman, 1985) treats embarrassment as anxiety. The idea of these studies was to determine the notion of embarrassment and to understand the reasons of it. To add, these studies agree that there is such emotion as embarrassment but no study highlight if people can understand whether a person is embarrassed. There are several ways to understand it. First, as signals of embarrassment the mimic, the actions of a person can be considered. That is what was done by psychologists. Secondly, the linguistics features can be taken into account. That was described in the previous study that is mentioned below. However, the success in understanding embarrassment might base not only on the ability of a speaker to express it but also on the ability of a listener to understand it. In this study we try to understand if there is the connection between listeners’ characteristics as gender, age, level of education and foreign language command and this ability.
+Embarrassment as other emotions mainly is the object of studies of psychology. For instance, (Goffman, 1967) describes embarrassment as expression of opinion about our actions that do not suit the situation. (Borg et al., 1988) understand embarrassment as a type of shame, (Edelman, 1985) treats embarrassment as anxiety. The idea of these studies was to determine the notion of embarrassment and to understand the reasons of it. To add, these studies agree that there is such emotion as embarrassment but no study highlight if people can understand whether a person is embarrassed. There are several ways to understand it. First, as signals of embarrassment the mimic, the actions of a person can be considered. That is what was done by psychologists. Secondly, the linguistics features can be taken into account. That was described in the previous study that is mentioned below. However, the success in understanding embarrassment might base not only on the ability of a speaker to express it but also on the ability of a listener to understand it. In this study we try to understand if there is the connection between listeners’ characteristics as gender, age, level of education and foreign language command and this ability.
 
 ### Mention some previous research (optional).
-This research was not started from scratch as it is based on the previous research of embarrassment on speech that was conducted as a part of the Research Seminar under the supervision of Bukharov V. M. during BA program. However, the current research is different from the previous one as extra linguistics factors are found under the examination. This was suggested due to the previous results according to which linguistics factors do not influence much on the recognition of embarrassment. To add, the previous study was extended so in the current research not only Russian but also French is taken into consideration that allows to check whether the language command and the language of audios might affect the level of embarrassment recognition.  
+This research is not started from scratch as it is based on the previous research of embarrassment on speech that was conducted as a part of the Research Seminar under the supervision of Bukharov V. M. during BA program. However, the current research is different from the previous one as extra linguistics factors are found under the examination. To add, the previous study was extended so in the current research not only Russian but also French is taken into consideration that allows to check whether the language command and the language of audios might affect the level of embarrassment recognition.  
 
 ## Research hypothesis  
 
@@ -193,9 +193,9 @@ Moreover, we also counted mean, max and min values for Russian audios, French au
 
 | Language of audio | Mean | Max | Min |
 | --- | --- | --- | --- | 
-| French | 2.314815 | 5 | 0 | 
-| Russian | 1.910185 5 | 0 | 
-| Both | 2.1125 | 5 | 0 | 
+| French | 2.315 | 5 | 0 | 
+| Russian | 1.910 | 5 | 0 | 
+| Both | 2.113 | 5 | 0 | 
 
 We can see that difference of mean values for Russian and French are slightly different. That is why we use t-test in order to discover whether this difference is staticstically significant.
 
