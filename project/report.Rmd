@@ -199,25 +199,30 @@ Moreover, we also counted mean, max and min values for Russian audios, French au
 
 We can see that difference of mean values for Russian and French are slightly different. That is why we use t-test in order to discover whether this difference is staticstically significant.
 
-```{r RuAndFr}
-embarr.FrRu <- c(embarr$A1.1,embarr$A1.2, embarr$B1.1, embarr$B1.2, embarr$C1.1, embarr$C1.2, embarr$D1.1, embarr$D1.2, embarr$E1.1, embarr$E1.2, embarr$A2.1,embarr$A2.2, embarr$B2.1, embarr$B2.2, embarr$C2.1, embarr$C2.2, embarr$D2.1, embarr$D2.2, embarr$E2.1, embarr$E2.2)
-embarr.lang <- c(rep("ru", times=2160),rep("fr", times=2160))
-embarr.FrRu.Sums <- data.frame(embarr.FrRu, embarr.lang)
-```
 
+```{r}
+embarr.FrRu <- c(embarr$meanFrench, embarr$meanRussian)
+language <- c(rep("ru", times=216),rep("fr", times=216))
+embarr.FrRu.Sums <- data.frame(embarr.FrRu, language)
+
+```
 Here we create a new data.frame with two columns: mean value and language/ Then we apply t-test.
 
-```{r RuAndFr}
+
+```{r}
+library(tidyverse)
 embarr.FrRu.Sums %>% 
-  ggplot(aes(embarr.FrRu, fill = embarr.lang, color = embarr.lang))+
+  ggplot(aes(embarr.FrRu, fill = language, color = language))+
   geom_density(alpha = 0.9)+
+  xlab("mean") +
   geom_rug()+
   theme_bw()
 ```
+![alt text](https://github.com/lilaspourpre/Linguistic-data-quantitative-analysis-and-visualisation/blob/master/project/img/commonMean.PNG)
 
 ```{r RuAndFr}
-t.test(embarr.FrRu.Sums[embarr.FrRu.Sums$embarr.lang == "ru", ]$embarr.FrRu,
-       embarr.FrRu.Sums[embarr.FrRu.Sums$embarr.lang == "fr", ]$embarr.FrRu)
+t.test(embarr.FrRu.Sums[embarr.FrRu.Sums$language == "ru", ]$embarr.FrRu,
+       embarr.FrRu.Sums[embarr.FrRu.Sums$language == "fr", ]$embarr.FrRu)
 ```
 We see that p-value is < 0.05, then we may assume that this result is statistically significant (differnece between mean scores is statistically significant)
 
