@@ -162,12 +162,14 @@ In this section you can put tables and plots that show data distribution for ind
 
 
 First of all, we counted all posible statistical info:
+
 | Age | NumOfRespondents |
 | --- | --- |
 | 18-25| 57 |
 | 26-30 | 52 |
 | 31-35 | 52 |
 | 36-40 | 55 |
+
 
 | Gender | NumOfRespondents |
 | --- | --- |
