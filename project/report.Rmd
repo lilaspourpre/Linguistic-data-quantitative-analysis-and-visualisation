@@ -243,6 +243,14 @@ embarr %>%
 
 cor = 0.253794 that demonstrates that the results have weak positive correlation
 
+We also ran a set of t-tests for discovering dependency of Russian, French and Russian+French mean embarrassement recognition values on each parameter. The results might be seen in the table below:
+
+| Parameters | Mean | Max | Min |
+| --- | --- | --- | --- | 
+| French | 2.315 | 5 | 0 | 
+| Russian | 1.910 | 5 | 0 | 
+| Both | 2.113 | 5 | 0 |
+
 ## Multi-factor analysis  
 At least two different methods have to be used. Please provide the output models summaries and graphs. Please evaluate your models (show and interpret relevant indicators such as classification accuracy, goodness of fit, classification power, inertia, variable significance, variable importance, etc.).   
 It is recommended to report, when needed, how did you fit the model, did you find any signs of overfitting, why do you believe that certain model is an optimal one, etc.
