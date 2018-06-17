@@ -226,6 +226,15 @@ t.test(embarr.FrRu.Sums[embarr.FrRu.Sums$language == "ru", ]$embarr.FrRu,
 ```
 We see that p-value is < 0.05, then we may assume that this result is statistically significant (differnece between mean scores is statistically significant)
 
+Moreover, we count correlation between mean values for Russian audios and French audios. 
+
+```{r}
+embarr %>% 
+  summarise(cor = cor(meanFrench, meanRussian))
+```
+
+cor = 0.253794 that demonstrates that the results do not correlate
+
 ## Multi-factor analysis  
 At least two different methods have to be used. Please provide the output models summaries and graphs. Please evaluate your models (show and interpret relevant indicators such as classification accuracy, goodness of fit, classification power, inertia, variable significance, variable importance, etc.).   
 It is recommended to report, when needed, how did you fit the model, did you find any signs of overfitting, why do you believe that certain model is an optimal one, etc.
