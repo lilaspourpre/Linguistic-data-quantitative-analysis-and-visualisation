@@ -197,7 +197,7 @@ Moreover, we also counted mean, max and min values for Russian audios, French au
 | Russian | 1.910 | 5 | 0 | 
 | Both | 2.113 | 5 | 0 | 
 
-We can see that difference of mean values for Russian and French are slightly different. That is why we use t-test in order to discover whether this difference is staticstically significant.
+We can see that difference of mean values (0,405) for Russian and French are slightly different. That is why we use t-test in order to discover whether this difference is staticstically significant.
 
 
 ```{r}
