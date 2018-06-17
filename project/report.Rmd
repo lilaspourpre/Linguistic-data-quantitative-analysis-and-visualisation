@@ -233,7 +233,7 @@ embarr %>%
   summarise(cor = cor(meanFrench, meanRussian))
 ```
 
-cor = 0.253794 that demonstrates that the results do not correlate
+cor = 0.253794 that demonstrates that the results have weak positive correlation
 
 ## Multi-factor analysis  
 At least two different methods have to be used. Please provide the output models summaries and graphs. Please evaluate your models (show and interpret relevant indicators such as classification accuracy, goodness of fit, classification power, inertia, variable significance, variable importance, etc.).   
