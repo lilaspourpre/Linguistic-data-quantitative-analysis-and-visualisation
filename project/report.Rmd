@@ -29,74 +29,56 @@ This research is not started from scratch as it is based on the previous researc
 
 ## Research hypothesis  
 
-As it has been already said we assume that mean embarrassment recognition value (hereinafter MERV) might depend on extra linguistic factors: gender, age, education and foreign language aquisition. Moreover, it is also important to discover whether embarressment in French is recognized "better" than embarressment in Russian. In other words, whether language of audio is important for embarresment detection. 
-
-
-Thus, in the current research we formulate the following null hypothesis:
-1) MERV doesn't depend on gender:
-*  MERV doesn't depend on gender for Russian audios
-*  MERV doesn't depend on gender for French audios
-*  MERV doesn't depend on gender for all audios
-
-2) MERV doesn't depend on age
-* MERV doesn't depend on age for Russian audios
-* MERV doesn't depend on age for French audios
-* MERV doesn't depend on age for all audios
-
-3) MERV doesn't depend on education level
-* MERV doesn't depend on education level for Russian audios
-* MERV doesn't depend on education level for French audios
-* MERV doesn't depend on education level for all audios
-
-4) MERV doesn't depend on the English language aquisition
-* MERV doesn't depend on the English language aquisition for Russian audios
-* MERV doesn't depend on the English language aquisition for French audios
-* MERV doesn't depend on the English language aquisition for all audios
-
-5) MERV doesn't depend on the Frenchh language aquisition
-* MERV doesn't depend on the Frenchh language aquisition for Russian audios
-* MERV doesn't depend on the Frenchh language aquisition for French audios
-* MERV doesn't depend on the Frenchh language aquisition for all audios
-
-All in all, as our null hypothesis for multi-factor analysis we assume that none of the above mentioned factor do not affect MERV results
-
-6) Language in audio is not important for embarresment detection.
+As it has been already said we assume that mean embarrassment recognition value (hereinafter MERV) might or might not depend on extra linguistic factors: gender, age, education and foreign language aquisition so as the hypothesis we consider that the mentioned extralinguistic factors do not influence on MERV. This means that people from different categories might be successfulor unsuccessful in MERV in the same way. 
+To add, in orfer to check this hypothesis we have to evaluate the results for each audio so we standardize the values of MERV by dividing each by 5 as we believe that MERV is equal to 5.  
 
 ## Data  
 
-Our dataset comprises 216 responces from questionnaire (described below). Our .csv file contains 216 rows and 25 columns
+Our dataset comprises 216 responces from questionnaire (described below). Our .csv file contains 216 rows and 25 columns.
 
-```{r dataset}
-embarr <- read.csv("dataset_embarr.csv")
-summary(embarr)
-str(embarr)
+* Our dependent variable is MERV -- mean embarrassement recognition value.
+We do not only read the data but also we transform it as was mentioned above.
+We do not only read the data but also standartize it to make the futher work easier. For example, the English and French columns are tharnsformed to the same format. To add, the value column was changed so that might help to make the results more reliable.
+```{r}
+library(tidyr)
+install.packages('irr')
+library(irr)
+embarr <- read.csv("C:/Users/User/Desktop/dataset_embarr.csv")
+embarr <- read.csv("C:/Users/User/Desktop/dataset_embarr.csv")
+embarr$English <- ifelse(embarr$English==1, "English yes", "English no")
+embarr$French <- ifelse(embarr$French==1, "French yes", "French no")
+embarr$Age <- as.factor(as.character(embarr$Age))
+embarr$English <- as.factor(embarr$English)
+embarr$French <- as.factor(embarr$French)
+embarr$ID <- c(1:length(embarr$Age))
+embarr[, 6:25] <- data.frame(t(apply(embarr[,  6:25], 1, function(x) {x / 5})))
 ```
-* Our dependent variable is MERV -- mean embarrassement recognition value: average score for all/French/Russian audios. Its type is numerical (ratio) and belongs to the interval from 0 to 5.For each audio we recieved the following maximum, minimum and average values:
+Also, for the following plots it might be a good idea to transform the data to long format and to add a new column that contains the speaker.
+```{r}
+#transforming the data to long format
+embarr %>% 
+  gather(Phrase, Value, A1.1:E2.2) ->
+embarr.long
 
-
-![alt text](https://github.com/lilaspourpre/Linguistic-data-quantitative-analysis-and-visualisation/blob/master/project/img/audio_French.png)
-
-
-![alt text](https://github.com/lilaspourpre/Linguistic-data-quantitative-analysis-and-visualisation/blob/master/project/img/audio_Russian.png)
-
-
-Considering the fact that mean values for Russian, French and overall mean for each respondent are not included in the dataset we count it using the following code:
-
-```{r dataset}
-embarr %>%
-  select(A1.1:E1.2) %>%
-  rowMeans() -> embarr$meanRussian
-
-embarr %>%
-  select(A2.1:E2.2) %>%
-  rowMeans() -> embarr$meanFrench
-
-embarr %>%
-  select(A1.1:E2.2) %>%
-  rowMeans() -> embarr$meanCommon
+#adding the Speaker 
+embarr.long %>% 
+  mutate(speaker = str_extract(Phrase, "[12]\\.[12]"),
+         speaker_1 = str_extract(speaker, "[12]$"),
+         speaker_2 = str_extract(speaker, "^[12]"),
+         speaker = if_else(speaker_1 == 1 & 
+                             speaker_2 == 1, 
+                           "Speaker 1",
+                           if_else(speaker_1 == 1 &
+                                     speaker_2 == 2,
+                                   "Speaker 2",
+                                   if_else(speaker_1 == 2 &
+                                             speaker_2 == 1,
+                                           "Speaker 3", 
+                                           "Speaker 4")))) %>% 
+  select(-speaker_1, -speaker_2) ->
+           embarr.long
 ```
- 
-Thus, we have 28 columns in total.
+Thus, we have 26 columns in total.
 
 * Our predictor variables are mostly categorical:
 1) age (categorical):
@@ -153,19 +135,18 @@ However, before converting our results to .csvfile we slightly change questionna
 It is rather obvious that our dataset is not as brilliant as it might seem at first glance. Binary type of language aquisition does not represent the actual language knowledge. The same problem might appear with age. 
 
 ### Data considerations
-Discuss research design (if applicable), independence, autocorrelation, nestedness of data, possible biases, etc.
+First of all, the data should be standardized. Secodly, to calculate lm we have to transform the data to long format. To add, we change the way of answer presenting of the categodies as Education, the language command (ability to speak foreign languages). So the raw data cannot be used. To add, as we are going to see below the data cannot provide statistically significant results that may help us to explain different dependencies and build models using the data.
 
 
 ## R libraries in use
 ```{r libraries}
 library(tidyverse)
-# include R libraries here or later
+library(ggplot)
+library(lme4)
 ```
 
 
 ## Analysis: descriptive statistics
-In this section you can put tables and plots that show data distribution for individual variables and distribution for pairs of variables. Histograms, density plots, boxplots (or violin plots), mosaic plots are recommended. You can also provide some basic statistical analysis, such as correlation, statistical significance, t-test and other simple tests. If you calculate a chi-square statistic, do not forget to estimate the effect size.
-
 
 First of all, we counted all posible statistical info:
 
@@ -196,111 +177,120 @@ First of all, we counted all posible statistical info:
 | --- | --- |
 | 0 | 109 |
 | 1 | 107 |
-
-Moreover, we also counted mean, max and min values for Russian audios, French audios and both in common: 
-
-| Language of audio | Mean | Max | Min |
-| --- | --- | --- | --- | 
-| French | 2.315 | 5 | 0 | 
-| Russian | 1.910 | 5 | 0 | 
-| Both | 2.113 | 5 | 0 | 
-
-We can see that difference of mean values (0,405) for Russian and French are slightly different. That is why we use t-test in order to discover whether this difference is staticstically significant.
-
+First, we took a look at the distrubution of the average values for each speaker and for each audio.
+```{r}
+embarr %>%
+  select(6:25) %>%
+  colMeans() -> means.embarr
+as.data.frame(means.embarr)
+means <- data.frame(questions = c('A1.1', 'A1.2', 'B1.1', 'B1.2', 'C1.1', 'C1.2', 'D1.1', 'D1.2', 'E1.1', 'E1.2', 'A2.1', 'A2.2', 'B2.1', 'B2.2', 'C2.1', 'C2.2', 'D2.1', 'D2.2', 'E2.1', 'E2.2'), speaker=c("Speaker 1", "Speaker 2", "Speaker 1", "Speaker 2", "Speaker 1", "Speaker 2", "Speaker 1", "Speaker 2", "Speaker 1", "Speaker 2", "Speaker 3", "Speaker 4", "Speaker 3", "Speaker 4", "Speaker 3", "Speaker 4", "Speaker 3", "Speaker 4", "Speaker 3", "Speaker 4"),  means = means.embarr)
+```
 
 ```{r}
-embarr.FrRu <- c(embarr$meanFrench, embarr$meanRussian)
-language <- c(rep("ru", times=216),rep("fr", times=216))
-embarr.FrRu.Sums <- data.frame(embarr.FrRu, language)
-
+ggplot(means,aes(x = speaker,y = means)) + 
+    geom_bar(aes(fill = speaker),stat = "identity",position = "dodge")+ theme_bw()+labs(title = "Average values for each speaker")
 ```
-Here we create a new data.frame with two columns: mean value and language/ Then we apply t-test.
-
+Also, we can check how good was the speaker in faking the emotion by compring the results of different groups.
 
 ```{r}
-library(tidyverse)
-embarr.FrRu.Sums %>% 
-  ggplot(aes(embarr.FrRu, fill = language, color = language))+
-  geom_density(alpha = 0.9)+
-  geom_rug()+
-  labs(title="Mean values for Russian and French audios", x="mean") +
-  theme_bw()
+embarr.long  %>% 
+  ggplot(aes(Education,Value, fill=Education)) +
+  geom_boxplot() +
+  facet_wrap(~speaker)+ theme_bw()
 ```
-![alt text](https://github.com/lilaspourpre/Linguistic-data-quantitative-analysis-and-visualisation/blob/master/project/img/commonMean.PNG)
-
-```{r RuAndFr}
-t.test(embarr.FrRu.Sums[embarr.FrRu.Sums$language == "ru", ]$embarr.FrRu,
-       embarr.FrRu.Sums[embarr.FrRu.Sums$language == "fr", ]$embarr.FrRu)
+It is seen from the plot that the fourth speaker has higher scores. To add, people with secondary education give the higher marks for the perfomance of the second speaker and thos group hives average scores whereas the group of higher education tends to give lower and average marks.
+```{r}
+embarr.long  %>% 
+  ggplot(aes(Gender,Value, fill=Gender)) +
+  geom_boxplot() +
+  facet_wrap(~speaker)+ theme_bw()
 ```
-We see that p-value is < 0.05, then we may assume that this result is statistically significant (differnece between mean scores is statistically significant)
+According to the gender distribution the preference goes to the second speaker as females think that the speach of the second speaker has more emotions. However, the results of the forth one are still high.  
+```{r}
+embarr.long  %>% 
+  ggplot(aes(English,Value, fill=English)) +
+  geom_boxplot() +
+  facet_wrap(~speaker)+theme_bw()
+```
+The same pattern can be seen in the distribution by the ability to speak English. It should be said that speaker 3 who is French has lower scores among people who can speak English so it might be the knowlage of a foreign language might influence on the results. The same pattern can be seen for the distribution by the ability to speak French.
+```{r}
+embarr.long  %>% 
+  ggplot(aes(French,Value, fill=French)) +
+  geom_boxplot() +
+  facet_wrap(~speaker)+theme_bw()
+```
+From the plot it can be seen that speaker 4 recieves the highest marks whereas speaker 1, apeaker 2 and speaker 3 have quite the same results.
+```{r}
+ggplot(means,aes(x = questions,y = means)) + 
+    geom_bar(aes(fill = speaker),stat = "identity",position = "dodge")+ theme_bw()+labs(title = "Average values for each audio")
+```
+From the plot the ditrubition of values is shown for each audio with respect to the speaker. As an interesting fact it can be point out that the average values for Russian audios are lower than the average values for French audios (compare A1.1 and A2.1, B1.2 and B2.1).
+To have more detailed information the following plots can be considered. 
+```{r}
+embarr.long  %>% 
+  ggplot(aes(Education,Value, fill=Education)) +
+  geom_boxplot() +
+  facet_wrap(~Phrase)+theme_bw()
+```
+```{r}
+embarr.long  %>% 
+  ggplot(aes(Gender,Value, fill=Gender)) +
+  geom_boxplot() +
+  facet_wrap(~Phrase)+theme_bw()
+```
+```{r}
+embarr.long  %>% 
+  ggplot(aes(English,Value, fill=English)) +
+  geom_boxplot() +
+  facet_wrap(~Phrase)+theme_bw()
+```
+```{r}
+embarr.long  %>% 
+  ggplot(aes(French,Value, fill=French)) +
+  geom_boxplot() +
+  facet_wrap(~Phrase)+theme_bw()
+```
 
-Moreover, we count correlation between mean values for Russian audios and French audios. 
-
+To summurize these rusults the violin plot was built. This plot can be built for each phrase (the example is for phrase A2.1). The plot illustrates the ditrubution of the results for each audio according to the gender, the level of education and the ability to speak English or French.
 ```{r}
 embarr %>% 
-  summarise(cor = cor(meanFrench, meanRussian))
+  ggplot(aes(Education, A2.1, fill = Gender))+
+  geom_violin()+
+  facet_grid(English~French)+ theme_bw()
 ```
-
-cor = 0.253794 that demonstrates that the results have weak positive correlation
-
-We also ran a set of t-tests for discovering dependency of Russian, French and Russian+French mean embarrassement recognition values on each parameter. The following code is run to calculate the values of t-tests. 
+Also, the lmer was considered. 
+```{r}
+library(lme4)
+lm_r <- lmer(Value~Gender+Education+English+French+(1|Phrase), data=embarr.long)
+summary(lm_r)
 ```
-#gender
-t.test(embarr[embarr$Gender == "M",]$meanRussian, embarr[embarr$Gender == "F" ,]$meanRussian)
-t.test(embarr[embarr$Gender == "M",]$meanFrench, embarr[embarr$Gender == "F" ,]$meanFrench)
-t.test(embarr[embarr$Gender == "M",]$meanCommon, embarr[embarr$Gender == "F" ,]$meanCommon)
-
-#education
-t.test(embarr[embarr$Education == "Higher",]$meanRussian, embarr[embarr$Education == "Secondary",]$meanRussian)
-t.test(embarr[embarr$Education == "Higher",]$meanFrench, embarr[embarr$Education == "Secondary" ,]$meanFrench)
-t.test(embarr[embarr$Education == "Higher",]$meanCommon, embarr[embarr$Education == "Secondary" ,]$meanCommon)
-
-#English
-t.test(embarr[embarr$English == "1",]$meanRussian, embarr[embarr$English == "0" ,]$meanRussian)
-t.test(embarr[embarr$English == "1",]$meanFrench, embarr[embarr$English == "0" ,]$meanFrench)
-t.test(embarr[embarr$English == "1",]$meanCommon, embarr[embarr$English == "0" ,]$meanCommon)
-
-#French
-t.test(embarr[embarr$French == "1",]$meanRussian, embarr[embarr$French == "0" ,]$meanRussian)
-t.test(embarr[embarr$French == "1",]$meanFrench, embarr[embarr$French == "0" ,]$meanFrench)
-t.test(embarr[embarr$French == "1",]$meanCommon, embarr[embarr$French == "0" ,]$meanCommon)
+For the seek of convinience the value of prediction was standardized.
+```{r}
+embarr.long$lm.predict <- predict(lm_r)
+for (i in 1:length(embarr.long$lm.predict)){
+  a <- embarr.long$lm.predict[i]
+  if (a > 0 && a <= 0.1)
+    embarr.long$lm.predict[i] <- 0
+  if (a > 0.1 && a <= 0.3)
+    embarr.long$lm.predict[i] <- 0.2
+  
+  if (a > 0.3 && a <= 0.5)
+    embarr.long$lm.predict[i] <- 0.4
+  
+  if (a > 0.5 && a <= 0.7)
+    embarr.long$lm.predict[i] <- 0.6
+  
+  if (a > 0.7 && a <= 0.9)
+    embarr.long$lm.predict[i] <- 0.8
+  
+  if (a > 0.9 && a <= 1)
+    embarr.long$lm.predict[i] <- 1
+}
 ```
-
-The results might be seen in the table below:
-
-| Parameters | t-value (RU) | p-value (RU)  | Statistically significant|
-| --- | --- | --- | --- | 
-| Gender | 0.220 | 0.982 || 
-| Education | -1.517 | 0.130 || 
-| English | -0.542 | 0.589 ||
-| French | -0.823 | 0.411 ||
-
-| Parameters | t-value (FR) | p-value (FR)  | Statistically significant|
-| --- | --- | --- | --- | 
-| Gender | -0.498 | 0.619  || 
-| Education | -0.964 | 0.336 || 
-| English | -2.87 | 0.004 | * |
-| French |  1.470 | 0.140 ||
-
-| Parameters | t-value (FR+RU) | p-value (FR+RU) | Statistically significant|
-| --- | --- | --- | --- | 
-| Gender | -0.317 | 0.752 || 
-| Education | -1.559 | 0.12 || 
-| English | -2.230 | 0.027 | * |
-| French  | 1.470 | 0.14 ||
-
-For multicategorical age parameter ANOVA is used.
+```{r}
+embarr.long %>% ggplot(aes(lm.predict, Value)) + geom_point()
 ```
-#age
-fit1 <- aov(meanRussian ~ Age, data = embarr)
-summary(fit1)
-
-fit2 <- aov(meanFrench ~ Age, data = embarr)
-summary(fit2)
-
-fit3 <- aov(meanCommon ~ Age, data = embarr)
-summary(fit3)
-```
+So as it is seen from the plot there is no correlation between values. 
 
 ## Multi-factor analysis  
 At least two different methods have to be used. Please provide the output models summaries and graphs. Please evaluate your models (show and interpret relevant indicators such as classification accuracy, goodness of fit, classification power, inertia, variable significance, variable importance, etc.).   
@@ -316,7 +306,6 @@ To add, the t-test shows that Age and English are significant we can build the f
 ### PCA
 
 ## Linguistic interpretation of the quantitative results  
-
+It is diffucult to comment on statistical results as it was seen that the data was not accurate enought. It can be concluded, that the characteristics of the listerner do not influence on their ability to understand the embarrassment. To add, it does not matterif the listener understands the meaning of the phrase so embarrassment can be found not in word but also in intonation. 
 ## Discussion on data distribution and quantitative methods in use   
-
-In conclusion, you can suggest ideas for further development of your research (correction of hypotheses, work with the data, their statistical analysis).
+It is suggested to provide the dataset that would be more accurate.To add, as it was pointed out it the comments to the survery it is diffucult to fake the embarrassment and only audios might be not enought to spot the emotion. So it can be a good idea to replace the audio with videos.Also, it might be a good idea to study not only listeners characteristics but also speaker characteristics as it might show that different speakers express the emotion in the different way.
