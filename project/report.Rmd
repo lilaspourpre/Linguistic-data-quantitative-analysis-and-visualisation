@@ -3,12 +3,12 @@ title: 'Speech emotion analysis: extralingustic feature influence on embarrasmen
   detection for French and Russian'
 date: "10.06.2018"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     code_folding: show
     toc: yes
     toc_float: yes
+  pdf_document:
+    toc: yes
 authors: Natalia Borisenko and Irina Nikishina
 ---
 
@@ -220,7 +220,7 @@ Also, we can check how good is the speaker in faking the emotion by compring the
 ```{r}
 embarr.long  %>% 
   ggplot(aes(Education,Value, fill=Education)) +
-  geom_boxplot() 
+  geom_boxplot() +
   facet_wrap(~speaker)+ theme_bw() 
 ```
 It is seen from the plot that the fourth speaker has higher scores. To add, people with secondary education give the higher marks for the perfomance of the second speaker and this group gives average scores whereas the group of higher education tends to give lower and average marks.
