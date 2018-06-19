@@ -1,13 +1,15 @@
 ---
-title: "Speech emotion analysis: extralingustic feature influence on embarrasment detection for French and Russian"
-date: 10.06.2018
-authors: Natalia Borisenko and Irina Nikishina
+title: 'Speech emotion analysis: extralingustic feature influence on embarrasment
+  detection for French and Russian'
+date: "10.06.2018"
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: true
-    toc_float: true
     code_folding: show
-
+    toc: yes
+    toc_float: yes
+authors: Natalia Borisenko and Irina Nikishina
 ---
 
 ```{r setup, echo=FALSE}
